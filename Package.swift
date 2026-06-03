@@ -5,9 +5,14 @@ let package = Package(
     name: "ExtensionManager",
     platforms: [.macOS(.v13)],
     targets: [
-        .executableTarget(
+         .executableTarget(
             name: "ExtensionManager",
             path: "Sources"
-        )
+         ),
+         .testTarget(
+            name: "ExtensionManagerTests",
+            dependencies: ["ExtensionManager"],
+            path: "Tests/ExtensionManagerTests"
+         ),
     ]
 )

@@ -47,10 +47,12 @@ struct ExtensionRowView: View {
             Button("Reveal in Finder") {
                 viewModel.revealInFinder(ext)
             }
+            .disabled(!ext.hasFileLocation)
             Divider()
             Button("Move to Trash", role: .destructive) {
                 viewModel.moveToTrash(ext)
             }
+            .disabled(!ext.hasFileLocation)
         }
     }
 }

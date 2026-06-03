@@ -122,6 +122,11 @@ final class ExtensionScanner: Sendable {
                 continue
             }
 
+            // Skip the per-section column header row, which systemextensionsctl
+            // prints verbatim as "enabled\tactive\tteamID\tbundleID (version)\t..."
+            // — otherwise it is mistakenly parsed as an extension named "bundleID".
+            if line.contains("bundleID (version)") { continue }
+
             // Tab-delimited: enabled\tactive\tteamID\t"bundleID (version)"\tname\t[state]
             let columns = line.components(separatedBy: "\t")
             guard columns.count >= 4 else { continue }

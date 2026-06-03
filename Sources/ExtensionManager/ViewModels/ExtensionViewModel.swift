@@ -79,6 +79,10 @@ class ExtensionViewModel: ObservableObject {
         } else {
             path = ext.path
         }
+        guard !path.isEmpty else {
+            errorMessage = "This extension has no file location and can't be moved to the Trash. Manage it in System Settings instead."
+            return
+        }
         let url = URL(fileURLWithPath: path)
         do {
             try FileManager.default.trashItem(at: url, resultingItemURL: nil)

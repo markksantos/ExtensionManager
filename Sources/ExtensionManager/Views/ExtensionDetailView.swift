@@ -302,6 +302,10 @@ struct ExtensionDetailView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
+                .disabled(!ext.hasFileLocation)
+                .help(ext.hasFileLocation
+                      ? "Reveal the containing app in Finder"
+                      : "No file location available for system extensions")
 
                 Button {
                     viewModel.openSystemSettings(for: ext)
@@ -319,6 +323,10 @@ struct ExtensionDetailView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
+            .disabled(!ext.hasFileLocation)
+            .help(ext.hasFileLocation
+                  ? "Move the containing app to the Trash"
+                  : "System extensions cannot be trashed here — remove them in System Settings")
         }
     }
 
