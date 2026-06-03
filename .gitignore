@@ -2,6 +2,7 @@ node_modules/
 DerivedData/
 .build/
 *.app/
+*.xcodeproj/
 dist/
 build/
 .next/

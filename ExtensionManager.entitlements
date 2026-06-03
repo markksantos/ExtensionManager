@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+      Entitlements for DIRECT distribution (Developer ID + notarization).
+
+      Extension Manager is intentionally NOT App-Sandboxed: it shells out to the
+      system tools `pluginkit` and `systemextensionsctl` to enumerate and toggle
+      extensions, which is impossible inside the App Sandbox. This rules out the
+      Mac App Store without a major rearchitecture. For Developer ID + Hardened
+      Runtime, the entitlements below are sufficient.
+    -->
+
+    <!-- Allow outbound network for the optional OpenAI descriptions feature. -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+
+    <!-- Hardened Runtime allows JIT-free; no special exceptions are required
+         because we invoke external tools via Process(), not by loading code. -->
+</dict>
+</plist>
