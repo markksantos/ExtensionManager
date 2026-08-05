@@ -14,3 +14,6 @@ venv/
 *.xcworkspace
 xcuserdata/
 Pods/
+
+# Xcode derived data (alt naming)
+DerivedDataCap/
